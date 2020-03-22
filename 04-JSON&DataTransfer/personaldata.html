@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Personal data</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <h1>Personal Dara</h1>
+    <input type="button" value="Display personal data" onclick="disp()" />
+    <div id="personalData"></div>
+
+    <script>
+        function disp() {
+            fetch('people.json')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+
+                    let list = "";
+
+                    for (let i = 0; i < data.length; i++) {
+                        list = list + `<p>${i + 1}. ${data[i].name} ${data[i].surname.toUpperCase()}, ${data[i].country}</p>`;
+                    }
+
+                    document.getElementById("personalData").innerHTML = list;
+
+                });
+        }
+    </script>
+</body>
+
+</html>
