@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <h1>Exchange rates</h1>
+    <input type="button" value="Display exchange rates" onclick="disp()" />
+    <p id="usd"></p>
+    <p id="eur"></p>
+    <p id="gbp"></p>
+
+    <script>
+        function disp() {
+            fetch("http://api.nbp.pl/api/exchangerates/rates/a/usd")
+                .then((response) => {
+                    console.log(response)
+                    return response.json();
+                })
+                .then((data) => {
+                    document.getElementById("usd").innerHTML = "USD: " + data.rates[0].mid;
+                });
+
+            fetch("http://api.nbp.pl/api/exchangerates/rates/a/eur")
+                .then((response) => {
+                    console.log(response)
+                    return response.json();
+                })
+                .then((data) => {
+                    document.getElementById("eur").innerHTML = "EUR: " + data.rates[0].mid;
+                });
+
+            fetch("http://api.nbp.pl/api/exchangerates/rates/a/gbp")
+                .then((response) => {
+                    console.log(response)
+                    return response.json();
+                })
+                .then((data) => {
+                    document.getElementById("gbp").innerHTML = "GBP: " + data.rates[0].mid;
+                });
+        }
+    </script>
+</body>
+
+</html>
