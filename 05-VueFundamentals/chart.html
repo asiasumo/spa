@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
+
 <body>
+
+  <div id="app">
+    <canvas id="chart" width="300" height="100"></canvas>
+  </div>
+
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
+        languages: [
           {
             language: 'Python',
             popularity: 25.95
@@ -29,9 +37,45 @@
             language: 'Php',
             popularity: 7.37
           }
-        ] 
+        ]
       }
     });
+
+    let myChart = document.getElementById("chart").getContext("2d")
+    let chartLabels = []
+    let chartData = []
+
+    for (lang of app.languages) {
+      chartLabels.push(lang.language)
+      chartData.push(lang.popularity)
+    }
+    let chart = new Chart(myChart, {
+      type: "bar",
+      data: {
+        labels: chartLabels,
+        datasets: [{
+          label: "Value",
+          data: chartData,
+          backgroundColor: [
+            'rgba(212, 94, 132, 0.2)',
+            'rgba(212, 94, 132, 0.2)',
+            'rgba(212, 94, 132, 0.2)',
+            'rgba(212, 94, 132, 0.2)',
+            'rgba(212, 94, 132, 0.2)',
+          ],
+          borderColor: [
+            'rgba(212, 94, 132, 1)',
+            'rgba(212, 94, 132, 1)',
+            'rgba(212, 94, 132, 1)',
+            'rgba(212, 94, 132, 1)',
+            'rgba(212, 94, 132, 1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {}
+    })
   </script>
 </body>
+
 </html>

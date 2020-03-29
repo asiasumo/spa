@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    table,
+    th,
+    td {
+      width: 50%;
+      padding: 10px;
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin: auto;
+    }
+  </style>
 </head>
+
 <body>
+  <div id="app">
+    <table>
+      <thead>
+        <tr>
+          <th v-for="(value, name) in films[0]" style="text-align: left; width:15%;">
+            {{ name[0].toUpperCase() + name.slice(1) }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="film in films">
+          <td v-for="data in film">{{ data }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -13,30 +42,30 @@
             title: 'Avatar',
             year: 2009,
             director: 'James Cameron',
-            budget: 237000000
+            budget: '$237000000'
           },
           {
             title: 'Pulp Fiction',
             year: 1994,
             director: 'Quentin Tarantino',
-            budget: 8000000
+            budget: '$8000000'
           },
           {
             title: 'Pitch Black',
             year: 2000,
             director: 'David Twohy',
-            budget: 23000000
+            budget: '$23000000'
           },
           {
             title: 'War and Peace',
             year: 1956,
             director: 'King Vidor',
-            budget: 6000000
+            budget: '$6000000'
           }
-        ] 
-        }
+        ]
       }
     });
   </script>
 </body>
+
 </html>
