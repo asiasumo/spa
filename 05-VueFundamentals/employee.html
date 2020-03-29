@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
+  <div id="app">
+    <div class="employee" v-for="employee in employees">
+      <br><b>EMPLOYEE RECORD</b>
+      <p style="margin: 0;">Name 1: {{ employee.name1 }}</p>
+      <p v-if="employee.name2" style="margin: 0;">Name 2: {{employee.name2}}</p>
+      <p style="margin: 0;">Surname: {{ employee.surname }}</p>
+      <p v-if="!employee.foreigner" style="margin: 0;">Pesel: {{ employee.pesel }}</p>
+      <p v-else style="margin: 0;">Nationality: {{ employee.nationality }}</p>
+      <p style="margin: 0;">Address: {{ employee.address }}</p>
+    </div>
+  </div>
+
   <script>
     var app = new Vue({
       el: '#app',
@@ -15,8 +29,24 @@
         nationality: 'Polish',
         pesel: '92021708229',
         address: 'ul. Szeroka 3, Kraków',
+        employees: [{
+          name1: 'Adam',
+          name2: 'Jan',
+          surname: 'Majewski',
+          foreigner: false,
+          nationality: 'Polish',
+          pesel: '92021708229',
+          address: 'ul. Szeroka 3, Kraków',
+        },
+        {
+          name1: 'John',
+          name2: null,
+          surname: 'Brown',
+          foreigner: true,
+          nationality: 'USA',
+          pesel: null,
+          address: 'Holland Drive 4, Chicago',
+        }]
+      },
     });
   </script>
-
-</body>
-</html>
