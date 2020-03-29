@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid rgb(216, 19, 52);
+            border-collapse: collapse;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table style="width: 60%">
+            <thead>
+                <tr>
+                    <th v-for="(value, name) in currencies[0]" style="text-align: left; width:15%;">
+                        {{ name[0].toUpperCase() + name.slice(1) }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="currency in currencies">
+                    <td v-for="data in currency">{{ data }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                currencies: []
+            },
+            mounted() {
+                fetch('http://api.nbp.pl/api/exchangerates/tables/A/')
+                    .then(response => response.json())
+                    .then((data) => (this.currencies = data[0].rates))
+            }
+        });
+    </script>
+</body>
+
+</html>
