@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Tytuł</h3>
+        <input type="text" v-model="tytul">
+        <h3>Imie</h3>
+        <input type="text" v-model="imie">
+        <h3>Nazwisko</h3>
+        <input type="text" v-model="nazwisko">
+        <br /><br />
+        <button type="button" v-on:click="display">Zapisz</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                tytul: '',
+                imie: '',
+                nazwisko: ''
+            },
+            methods: {
+                display: function ($event) {
+                    console.log(this.tytul)
+                    console.log(this.imie)
+                    console.log(this.nazwisko)
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+© 2020 GitHub, Inc.

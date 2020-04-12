@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" value="Systemy Zintegrowane" v-model="subjects">Systemy zintegrowane
+        <input type="checkbox" value="Sytemy operacyjne" v-model="subjects">Systemy operacyjne
+        <input type="checkbox" value="SPA" v-model="subjects">SPA
+        <input type="checkbox" value="Pracownia programowania" v-model="subjects">Pracownia programowania
+        <input type="checkbox" value="PSM" v-model="subjects">PSM
+        <p>Zaznaczono: {{subjects.length}}</p>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                subjects: []
+            },
+        });
+    </script>
+
+</body>
+
+</html>
