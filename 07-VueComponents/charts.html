@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <chart></chart>
+    </div>
+
+    <script>
+        Vue.component('chart', {
+            template: '<canvas id="chart" width="300" height="100"></canvas>',
+        })
+
+
+        new Vue({
+            el: "#app",
+            data: {
+                BTS: [
+                    {
+                        member: 'Kim Tae-hyung',
+                        popularity: 100
+                    },
+                    {
+                        member: 'Jeon Jung-kook',
+                        popularity: 99.99
+                    },
+                    {
+                        member: 'Park Jimin',
+                        popularity: 89.8
+                    },
+                    {
+                        member: 'Jung Ho-seok',
+                        popularity: 86.3
+                    },
+                    {
+                        member: 'Kim Nam-joon',
+                        popularity: 86.1
+                    },
+                    {
+                        member: 'Min Yoon-gi',
+                        popularity: 83.1
+                    },
+                    {
+                        member: 'Kim Seok-jin',
+                        popularity: 86.2
+                    }
+                ]
+            },
+            mounted() {
+                let Mychart = document.getElementById("chart").getContext("2d")
+                let chartLabels = []
+                let chartData = []
+
+                for (l of this.BTS) {
+                    chartLabels.push(l.member)
+                    chartData.push(l.popularity)
+                }
+
+                let chart = new Chart(Mychart, {
+                    type: "bar",
+                    data: {
+                        labels: chartLabels,
+                        datasets: [{
+                            label: "Value",
+                            data: chartData,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                            ],
+                        }]
+                    },
+                    options: {}
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
